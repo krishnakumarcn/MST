@@ -99,13 +99,13 @@ public class Graph {
 		
 		System.out.println("The input graph is:");
 		for(int i=0;i<E;i++)
-			   System.out.println(graph.edge[i].source + "-->" + graph.edge[i].destination + "= " + graph.edge[i].weight);
+                    System.out.println(graph.edge[i].source + "-->" + graph.edge[i].destination + "= " + graph.edge[i].weight);
 		
 		final long startTime =System.nanoTime();
 		graph.kruskalMST();
 		final long endTime=System.nanoTime();
 		final long execTime=endTime-startTime;
-		System.out.println("Execution Time for Kruskal Algorithm:" + execTime+" nanoseconds");
+		System.out.println("\nExecution Time for Kruskal Algorithm:" + execTime+" nanoseconds");
 		
 
 	}
@@ -145,7 +145,7 @@ public class Graph {
 			
 		}
 		//display output
-		System.out.println("The edges of MST are:");
+		System.out.println("\nThe edges of MST are:");
 		for(i=0;i<e;i++)
 			System.out.println(result[i].source + "-->" + result[i].destination);
 		
