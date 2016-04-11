@@ -2,6 +2,7 @@ package Kruskals;
 import java.io.File;
 import java.util.Arrays;
 import java.util.Scanner;
+import Kruskals.Main.*;
 
 /**
  * @author krishnakumar
@@ -18,6 +19,8 @@ public class Graph {
        {
            nw.V=scanner.nextInt();
            nw.E=scanner.nextInt();
+           Main.numVertex=nw.V;
+           Main.numEdge=nw.E;
            nw.edge= new Edge[nw.E];
            for(int i=0; i<nw.E; ++i)
               nw.edge[i]=new Edge();
@@ -66,83 +69,16 @@ public class Graph {
 	}
 
 	public static void mainGraph(){
-		//int V=9;//no.of vertices
-		//int E=14;//no.of edges
-		Graph graph=Graph.build("input2.txt");                
-                /*
-		//setting graph edges
-		
-		graph.edge[0].source=0;
-		graph.edge[0].destination=1;
-		graph.edge[0].weight=4;
-
-		graph.edge[1].source=0;
-		graph.edge[1].destination=7;
-		graph.edge[1].weight=8;
-
-
-		graph.edge[2].source=1;
-		graph.edge[2].destination=2;
-		graph.edge[2].weight=8;
-
-		graph.edge[3].source=1;
-		graph.edge[3].destination=7;
-		graph.edge[3].weight=11;
-
-		graph.edge[4].source=7;
-		graph.edge[4].destination=8;
-		graph.edge[4].weight=7;
-
-
-		graph.edge[5].source=7;
-		graph.edge[5].destination=6;
-		graph.edge[5].weight=1;
-
-		graph.edge[6].source=2;
-		graph.edge[6].destination=8;
-		graph.edge[6].weight=2;
-
-		graph.edge[7].source=8;
-		graph.edge[7].destination=6;
-		graph.edge[7].weight=6;
-
-
-
-		graph.edge[8].source=2;
-		graph.edge[8].destination=3;
-		graph.edge[8].weight=7;
-
-		graph.edge[9].source=2;
-		graph.edge[9].destination=5;
-		graph.edge[9].weight=4;
-
-		graph.edge[10].source=6;
-		graph.edge[10].destination=5;
-		graph.edge[10].weight=2;
-
-
-		graph.edge[11].source=3;
-		graph.edge[11].destination=4;
-		graph.edge[11].weight=9;
-
-		graph.edge[12].source=3;
-		graph.edge[12].destination=5;
-		graph.edge[12].weight=14;
-
-		graph.edge[13].source=5;
-		graph.edge[13].destination=4;
-		graph.edge[13].weight=10;
-		
-*/
-		System.out.println("The input graph is:");
+		Graph graph=Graph.build(Main.inputfile);                
+	/*	System.out.println("The input graph:\n-------------");
 		for(int i=0;i<graph.E;i++)
                    System.out.println(graph.edge[i].source + "-->" + graph.edge[i].destination + "= " + graph.edge[i].weight);
-		
-		final long startTime =System.nanoTime();
+	*/	System.out.println("Kruskel's Algorithm\n-------------");
+		final long startTime =System.currentTimeMillis();
 		graph.kruskalMST();
-		final long endTime=System.nanoTime();
-		final long execTime=endTime-startTime;
-		System.out.println("\nExecution Time for Kruskal Algorithm:" + execTime+" nanoseconds");
+		final long endTime=System.currentTimeMillis();
+		Main.timeKruskel=endTime-startTime;
+//		System.out.println("\nExecution Time for Kruskal Algorithm:" + execTime+" ms");
 		
 
 	}
@@ -182,11 +118,11 @@ public class Graph {
 			
 		}
 		//display output
-		System.out.println("\nThe edges of MST are:");
+	/*	System.out.println("\nThe edges of MST are:");
 		for(i=0;i<e;i++)
 			System.out.println(result[i].source + "-->" + result[i].destination);
 		
-		
+	*/	
 		
 	}
 
