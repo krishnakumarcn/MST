@@ -19,7 +19,7 @@ public class PrimTest
 		System.out.println("Result:");
 		for(Vertex a: result.vertices)
 		{
-			System.out.println(a.vertexID+"  "+a.pi);
+			System.out.println(a.vertexID+"->"+a.pi);
 		}
 	}
 }
@@ -56,11 +56,11 @@ class Prim
 //					System.err.println("min.vertexID "+min.vertexID+" a.weight "+a.weight);
 				}
 			}
-			System.err.println("VertexID "+min.vertexID);
+			/*System.err.println("VertexID "+min.vertexID);
 			for(Vertex v:input.vertices)
 			{
 				System.err.println("vid "+v.vertexID+" vpi "+v.pi+" vkey "+v.key);
-			}
+			}*/
 			q.remove(min);
 
 		}
