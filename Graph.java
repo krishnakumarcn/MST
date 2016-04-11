@@ -1,5 +1,7 @@
 package Kruskals;
+import java.io.File;
 import java.util.Arrays;
+import java.util.Scanner;
 
 /**
  * @author krishnakumar
@@ -7,6 +9,41 @@ import java.util.Arrays;
  */
 
 public class Graph {
+
+    public static Graph build(String inputtxt) {
+       // throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+       Graph nw= new Graph();
+       
+       try(Scanner scanner=new Scanner(new File(inputtxt)))
+       {
+           nw.V=scanner.nextInt();
+           nw.E=scanner.nextInt();
+           nw.edge= new Edge[nw.E];
+           for(int i=0; i<nw.E; ++i)
+              nw.edge[i]=new Edge();
+           int index=0;   
+           for(int i=0; i<nw.V; i++){
+               for(int j=0; j<nw.V; j++){
+                    int val=scanner.nextInt();
+                    if(val==0||j<i)
+                       continue;
+                    else{
+                        nw.edge[index].weight=val;
+			nw.edge[index].source=i;
+                        nw.edge[index].destination=j;
+                        index++;
+                        //System.err.println(edge.weight);
+                    }                  
+                   
+            }
+           }
+       }
+       catch(Exception e)
+       {
+           e.printStackTrace();
+       }
+       return nw;
+    }
 	
 	int V,E;	//no,of vertices and edges
 	Edge edge[];
@@ -20,19 +57,19 @@ public class Graph {
 		}
 	}
 
-    Graph() {
-        throw new UnsupportedOperationException("Not supported yet.");
-    }
+        Graph() {
+            // throw new UnsupportedOperationException("Not supported yet.");
+        }
 	
 	class Subset{
 		int parent,rank;
 	}
 
-	public static void main(String[] args){
-		int V=9;//no.of vertices
-		int E=14;//no.of edges
-		Graph graph=new Graph(V,E);
-		
+	public static void mainGraph(){
+		//int V=9;//no.of vertices
+		//int E=14;//no.of edges
+		Graph graph=Graph.build("input2.txt");                
+                /*
 		//setting graph edges
 		
 		graph.edge[0].source=0;
@@ -96,10 +133,10 @@ public class Graph {
 		graph.edge[13].destination=4;
 		graph.edge[13].weight=10;
 		
-		
+*/
 		System.out.println("The input graph is:");
-		for(int i=0;i<E;i++)
-                    System.out.println(graph.edge[i].source + "-->" + graph.edge[i].destination + "= " + graph.edge[i].weight);
+		for(int i=0;i<graph.E;i++)
+                   System.out.println(graph.edge[i].source + "-->" + graph.edge[i].destination + "= " + graph.edge[i].weight);
 		
 		final long startTime =System.nanoTime();
 		graph.kruskalMST();
@@ -173,8 +210,14 @@ public class Graph {
 			subsets[index].parent=find(subsets,subsets[index].parent);
 		return subsets[index].parent;
 	}
+        
+        
 
-	class Edge implements Comparable<Edge>{
+	
+
+}
+
+class Edge implements Comparable<Edge>{
 		int source,destination,weight;
 
 		@Override
@@ -182,6 +225,5 @@ public class Graph {
 			return this.weight-o.weight;
 		}
 
-	}
+        }
 
-}
