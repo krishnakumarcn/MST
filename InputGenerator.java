@@ -69,6 +69,7 @@ class WrFile
 					bw.write(eol);
 					i++;
 				}
+				count = count/2; //Undirected Graph
 				bw.write(count+eol);
 				bw.close();
 			}
