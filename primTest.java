@@ -2,6 +2,7 @@
 * JAVA implementation of Prims MST algorithm
 */
 package prim;
+import Kruskals.Main;
 import java.util.*;
 import java.io.File;
 
@@ -9,13 +10,18 @@ public class PrimTest
 {
 	public static void primStart()
 	{
-		Graph input = Graph.build("input2.txt");
+		Graph input = Graph.build(Main.inputfile);
+                final long t1=System.currentTimeMillis();
 		int result= Prim.primMST(input, 0);
-		printResult(input);
+                final long t2=System.currentTimeMillis();
+                Main.timePrim=t2-t1;
+	//	printResult(input);
+//                System.out.println("Execution Time for Prim's Algorithm : "+t3+"ms");
 	}
 
 	private static void printResult(Graph result)
 	{
+                System.out.println("Prim's Algorithm\n---------------- ");
 		System.out.println("Result:");
 		for(Vertex a: result.vertices)
 		{
